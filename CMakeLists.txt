@@ -1,5 +1,6 @@
-cmake_minimum_required(VERSION 3.12)
-cmake_policy(VERSION 3.12)
+cmake_minimum_required(VERSION 3.15)
+cmake_policy(VERSION 3.15)
+project(Shiboken2-Qt-Example)
 
 find_package(Qt5 REQUIRED Core)
 
@@ -7,8 +8,6 @@ get_target_property(QtCore_location Qt5::Core LOCATION)
 get_filename_component(QtCore_libdir ${QtCore_location} DIRECTORY)
 
 set(CMAKE_AUTOMOC ON)
-
-project(Shiboken2-Qt-Example)
 
 set(CMAKE_CXX_STANDARD 11)
 set(sample_library "libexamplebinding")
@@ -19,6 +18,7 @@ set(generated_sources
     ${CMAKE_CURRENT_BINARY_DIR}/${bindings_library}/qobjectwithenum_wrapper.cpp
     ${CMAKE_CURRENT_BINARY_DIR}/${bindings_library}/shiboken2qtexample_module_wrapper.cpp)
 
+set(Python3_FIND_VIRTUALENV ONLY)
 find_package(Python3 REQUIRED COMPONENTS Interpreter Development)
 
 if(NOT python_interpreter)
